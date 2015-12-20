@@ -42,6 +42,16 @@ public class Command {
         mHttpUtils.post(setIdKey());
     }
 
+    public void basicShell(String command, OkHttpUtils.HttpCallBack callBack) {
+        mHttpUtils.setUrl(Configure.HOST_URL + Configure.BASICSHELL).setCallBack(callBack);
+        RequestBody body=new FormEncodingBuilder()
+                .add("veid", mID)
+                .add("api_key", mKey)
+                .add("command", command)
+                .build();
+        mHttpUtils.post(body);
+    }
+
     private RequestBody setIdKey(){
         RequestBody body=new FormEncodingBuilder()
                 .add("veid", mID)

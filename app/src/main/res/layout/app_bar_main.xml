@@ -2,6 +2,7 @@
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,13 +32,39 @@
     <include layout="@layout/content_main"/>
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/activity_main_fab_reload"
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/activity_main_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:src="@drawable/ic_cached_24dp"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        fab:menu_colorNormal="@color/colorAccent"
+        fab:menu_colorPressed="@color/colorAccent"
+        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
+        fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right">
+
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/activity_main_fab_menu_shell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_keyboard_return_24dp"
+            fab:fab_label="@string/activity_main_fab_label_basicShell"
+            fab:fab_size="mini"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/activity_main_fab_menu_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_cached_24dp"
+            fab:fab_label="@string/activity_main_fab_label_refresh"
+            fab:fab_size="mini"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"/>
+
+    </com.github.clans.fab.FloatingActionMenu>
 
 </android.support.design.widget.CoordinatorLayout>

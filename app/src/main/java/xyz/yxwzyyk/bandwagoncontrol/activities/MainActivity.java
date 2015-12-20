@@ -1,8 +1,8 @@
 package xyz.yxwzyyk.bandwagoncontrol.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -13,14 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -47,6 +46,7 @@ public class MainActivity extends AppCompatActivity
     private static final int GROUP_LIST = 100;
     private static final int GROUP_ADD = 101;
     private static final int MENU_ADD_ID = 9999; //防止和list的按钮ID重复
+
     @Bind(R.id.activity_main_toolbar)
     Toolbar mActivityMainToolbar;
     @Bind(R.id.activity_main_appBarLayout)
@@ -97,22 +97,28 @@ public class MainActivity extends AppCompatActivity
     ProgressBar mMainProgressBarBandwidth;
     @Bind(R.id.main_textView_resets)
     TextView mMainTextViewResets;
-    @Bind(R.id.main_cardView)
-    CardView mMainCardView;
-    @Bind(R.id.activity_main_fab_reload)
-    FloatingActionButton mActivityMainFabReload;
-    @Bind(R.id.activity_main_nav_view)
-    NavigationView mActivityMainNavView;
-    @Bind(R.id.activity_main_drawer_layout)
-    DrawerLayout mActivityMainDrawerLayout;
     @Bind(R.id.start)
     Button mStart;
     @Bind(R.id.reboot)
     Button mReboot;
     @Bind(R.id.stop)
     Button mStop;
+    @Bind(R.id.main_cardView)
+    CardView mMainCardView;
+    @Bind(R.id.activity_main_nav_view)
+    NavigationView mActivityMainNavView;
+    @Bind(R.id.activity_main_drawer_layout)
+    DrawerLayout mActivityMainDrawerLayout;
+    @Bind(R.id.activity_main_fab_menu_shell)
+    FloatingActionButton mActivityMainFabMenuShell;
+    @Bind(R.id.activity_main_fab_menu_refresh)
+    FloatingActionButton mActivityMainFabMenuRefresh;
+    @Bind(R.id.activity_main_fab)
+    FloatingActionMenu mActivityMainFab;
+    @Bind(R.id.main_progressBar_loading)
+    ProgressBar mMainProgressBarLoading;
+
     private DBManager mDB;
-    private Animation mAnimation;
     private List<Host> mList;
     private int mListPointer = -1;
 
@@ -189,11 +195,24 @@ public class MainActivity extends AppCompatActivity
 
 
         //设置浮动刷新按钮
-        mActivityMainFabReload.setOnClickListener(new View.OnClickListener() {
+        mActivityMainFabMenuRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mActivityMainFab.close(true);
                 getData();
+            }
+        });
 
+        //设置浮动shell按钮
+        mActivityMainFabMenuShell.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mActivityMainFab.close(true);
+                Intent intent = new Intent(MainActivity.this, ExecActivity.class);
+                intent.putExtra("id", mList.get(mListPointer).veid);
+                intent.putExtra("key",  mList.get(mListPointer).key);
+                intent.putExtra("type", "basicShell");
+                startActivity(intent);
             }
         });
 
@@ -288,25 +307,21 @@ public class MainActivity extends AppCompatActivity
 
 
     public void getData() {
+        mMainProgressBarLoading.setVisibility(View.VISIBLE);
         mMainCardView.setVisibility(View.GONE);
-        //动画
-        mAnimation = AnimationUtils.loadAnimation(this, R.anim.rotation);
-        LinearInterpolator lir = new LinearInterpolator();  //匀速旋转
-        mAnimation.setInterpolator(lir);
-        mActivityMainFabReload.startAnimation(mAnimation);
         final Host host = mList.get(mListPointer);
-        mActivityMainFabReload.setVisibility(View.VISIBLE);
+        mActivityMainFab.setVisibility(View.VISIBLE);
         mMainCardViewTip.setVisibility(View.GONE);
         new Command(host.veid, host.key).getInfo(new OkHttpUtils.HttpCallBack() {
             @Override
             public void onFail(Exception e) {
-                mActivityMainFabReload.clearAnimation();
+                mMainProgressBarLoading.setVisibility(View.GONE);
                 Toast.makeText(getApplicationContext(), R.string.activity_main_message_internet, Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onOk(String msg) {
-                mActivityMainFabReload.clearAnimation();
+                mMainProgressBarLoading.setVisibility(View.GONE);
                 Gson gson = new Gson();
                 Info info = gson.fromJson(msg, Info.class);
                 if (info.getError() != 0) {
@@ -340,7 +355,7 @@ public class MainActivity extends AppCompatActivity
                     mStart.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(getApplicationContext(),R.string.activity_main_message_start,Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.activity_main_message_start, Toast.LENGTH_LONG).show();
                             new Command(host.veid, host.key).start(new OkHttpUtils.HttpCallBack() {
                                 @Override
                                 public void onFail(Exception e) {
@@ -358,7 +373,7 @@ public class MainActivity extends AppCompatActivity
                     mReboot.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(getApplicationContext(),R.string.activity_main_message_reboot,Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.activity_main_message_reboot, Toast.LENGTH_LONG).show();
                             new Command(host.veid, host.key).reboot(new OkHttpUtils.HttpCallBack() {
                                 @Override
                                 public void onFail(Exception e) {
@@ -376,7 +391,7 @@ public class MainActivity extends AppCompatActivity
                     mStop.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            Toast.makeText(getApplicationContext(),R.string.activity_main_message_stop,Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), R.string.activity_main_message_stop, Toast.LENGTH_LONG).show();
                             new Command(host.veid, host.key).stop(new OkHttpUtils.HttpCallBack() {
                                 @Override
                                 public void onFail(Exception e) {

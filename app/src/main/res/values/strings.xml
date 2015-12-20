@@ -16,6 +16,9 @@
     <string name="activity_main_menu_remove">删除配置</string>
     <string name="activity_main_drawer_add">添加主机配置</string>
 
+    <string name="activity_main_fab_label_refresh">刷新</string>
+    <string name="activity_main_fab_label_basicShell">执行Shell</string>
+
     <string name="dialog_host_main_hint_title">主机名称</string>
     <string name="dialog_host_main_hint_id">主机ID(VEID)</string>
     <string name="dialog_host_main_hint_key">密钥(API KEY)</string>
@@ -44,6 +47,11 @@
     <string name="content_main_title_start">启动</string>
     <string name="content_main_title_reboot">重启</string>
     <string name="content_main_title_stop">停止</string>
+
+    <string name="exec_send">发送</string>
+    <string name="exec_empty">命令不能为空</string>
+    <string name="exec_send_message">发送命令</string>
+    <string name="exec_message_error">网络错误发送失败请重试!</string>
 
 
 </resources>

@@ -10,5 +10,6 @@ public class Configure {
     public static final String REBOOT = "restart";
     public static final String STOP = "stop";
     public static final String START = "start";
+    public static final String BASICSHELL = "basicShell/exec";
 
 }
