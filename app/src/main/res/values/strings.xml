@@ -29,11 +29,6 @@
     <string name="dialog_host_main_null">不能为空</string>
     <string name="dialog_host_main_ok">确定</string>
     <string name="dialog_host_main_cancel">取消</string>
-    <string name="dialog_host_main_about">
-        周末写的小程序希望可以对你有帮助\n如果你有任何建议或者疑问可以发邮件给我 yxwzyyk@gmail.com\n
-        更新日志:\n
-        2015-12-20:修正Resrst显示,添加basicShell
-    </string>
 
     <string name="content_main_tip">请选择或者添加一个配置文件!</string>
     <string name="content_main_title_CPU">CPU负载</string>
@@ -57,5 +52,10 @@
     <string name="exec_send_message">发送命令</string>
     <string name="exec_message_error">网络错误发送失败请重试!</string>
 
+    <string name="dialog_host_main_about">
+        周末写的小程序希望可以对你有帮助\n如果你有任何建议或者疑问可以发邮件给我 yxwzyyk@gmail.com\n
+        更新日志:\n
+        2015-12-20:修正Resrst显示,添加basicShell
+    </string>
 
 </resources>
