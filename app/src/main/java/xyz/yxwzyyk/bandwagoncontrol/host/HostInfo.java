@@ -60,7 +60,7 @@ public class HostInfo {
 
     public String getResets() {
         String date = "";
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
         date += "Resets:" + dateFormat.format(mInfo.getData_next_reset() * 1000);
         return date;
     }

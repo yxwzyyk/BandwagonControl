@@ -82,7 +82,7 @@ public class Info {
     private String os;
     private String email;
     private long data_counter;
-    private int data_next_reset;
+    private long data_next_reset;
     private boolean rdns_api_available;
     private boolean suspended;
     private int error;
@@ -252,7 +252,7 @@ public class Info {
         return data_counter;
     }
 
-    public int getData_next_reset() {
+    public long getData_next_reset() {
         return data_next_reset;
     }
 
