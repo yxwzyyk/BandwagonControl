@@ -33,7 +33,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import xyz.yxwzyyk.bandwagoncontrol.R;
 import xyz.yxwzyyk.bandwagoncontrol.app.AnalyticsTrackers;
-import xyz.yxwzyyk.bandwagoncontrol.app.MainApplication;
 import xyz.yxwzyyk.bandwagoncontrol.db.DBManager;
 import xyz.yxwzyyk.bandwagoncontrol.db.Host;
 import xyz.yxwzyyk.bandwagoncontrol.host.Command;
