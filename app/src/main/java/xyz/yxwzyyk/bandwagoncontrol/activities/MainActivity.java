@@ -195,25 +195,19 @@ public class MainActivity extends AppCompatActivity
 
 
         //设置浮动刷新按钮
-        mActivityMainFabMenuRefresh.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mActivityMainFab.close(true);
-                getData();
-            }
+        mActivityMainFabMenuRefresh.setOnClickListener(v -> {
+            mActivityMainFab.close(true);
+            getData();
         });
 
         //设置浮动shell按钮
-        mActivityMainFabMenuShell.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mActivityMainFab.close(true);
-                Intent intent = new Intent(MainActivity.this, ExecActivity.class);
-                intent.putExtra("id", mList.get(mListPointer).veid);
-                intent.putExtra("key",  mList.get(mListPointer).key);
-                intent.putExtra("type", "basicShell");
-                startActivity(intent);
-            }
+        mActivityMainFabMenuShell.setOnClickListener(v -> {
+            mActivityMainFab.close(true);
+            Intent intent = new Intent(MainActivity.this, ExecActivity.class);
+            intent.putExtra("id", mList.get(mListPointer).veid);
+            intent.putExtra("key",  mList.get(mListPointer).key);
+            intent.putExtra("type", "basicShell");
+            startActivity(intent);
         });
 
         //设置抽屉导航
@@ -228,12 +222,7 @@ public class MainActivity extends AppCompatActivity
         //更新列表
         updateHostList();
 
-        mMainCardViewTip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mActivityMainDrawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
+        mMainCardViewTip.setOnClickListener(v -> mActivityMainDrawerLayout.openDrawer(GravityCompat.START));
 
         mActivityMainDrawerLayout.openDrawer(GravityCompat.START);
 
@@ -242,14 +231,11 @@ public class MainActivity extends AppCompatActivity
     private void addHost() {
         final AddHostDialog dialog = new AddHostDialog(this);
 
-        dialog.setCallBack(new DialogCallBack() {
-            @Override
-            public void onCallBack(boolean result) {
-                if (result) {
-                    mDB.insert(dialog.getHost());
-                    updateHostList();
-                    mActivityMainDrawerLayout.openDrawer(GravityCompat.START);
-                }
+        dialog.setCallBack(result -> {
+            if (result) {
+                mDB.insert(dialog.getHost());
+                updateHostList();
+                mActivityMainDrawerLayout.openDrawer(GravityCompat.START);
             }
         });
         dialog.show();
@@ -258,14 +244,11 @@ public class MainActivity extends AppCompatActivity
     private void updateHost() {
         if (mList.size() <= 0) return;
         final UpdateHostDialog dialog = new UpdateHostDialog(this, mList.get(mListPointer));
-        dialog.setCallBack(new DialogCallBack() {
-            @Override
-            public void onCallBack(boolean result) {
-                if (result) {
-                    mDB.update(dialog.getHost());
-                    updateHostList();
-                    mActivityMainDrawerLayout.openDrawer(GravityCompat.START);
-                }
+        dialog.setCallBack(result -> {
+            if (result) {
+                mDB.update(dialog.getHost());
+                updateHostList();
+                mActivityMainDrawerLayout.openDrawer(GravityCompat.START);
             }
         });
         dialog.show();
@@ -274,14 +257,11 @@ public class MainActivity extends AppCompatActivity
     private void deleteHost() {
         if (mList.size() <= 0) return;
         DeleteHostDialog dialog = new DeleteHostDialog(this);
-        dialog.setCallBack(new DialogCallBack() {
-            @Override
-            public void onCallBack(boolean result) {
-                if (result) {
-                    mDB.delete(mList.get(mListPointer)._id);
-                    updateHostList();
-                    mActivityMainDrawerLayout.openDrawer(GravityCompat.START);
-                }
+        dialog.setCallBack(result -> {
+            if (result) {
+                mDB.delete(mList.get(mListPointer)._id);
+                updateHostList();
+                mActivityMainDrawerLayout.openDrawer(GravityCompat.START);
             }
         });
         dialog.show();
@@ -352,58 +332,49 @@ public class MainActivity extends AppCompatActivity
                     mMainProgressBarBandwidth.setProgress(hostInfo.getBandwidthPercentage());
                     mMainTextViewResets.setText(hostInfo.getResets());
 
-                    mStart.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(getApplicationContext(), R.string.activity_main_message_start, Toast.LENGTH_LONG).show();
-                            new Command(host.veid, host.key).start(new OkHttpUtils.HttpCallBack() {
-                                @Override
-                                public void onFail(Exception e) {
+                    mStart.setOnClickListener(v -> {
+                        Toast.makeText(getApplicationContext(), R.string.activity_main_message_start, Toast.LENGTH_LONG).show();
+                        new Command(host.veid, host.key).start(new OkHttpUtils.HttpCallBack() {
+                            @Override
+                            public void onFail(Exception e) {
 
-                                }
+                            }
 
-                                @Override
-                                public void onOk(String msg) {
+                            @Override
+                            public void onOk(String msg1) {
 
-                                }
-                            });
-                        }
+                            }
+                        });
                     });
 
-                    mReboot.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(getApplicationContext(), R.string.activity_main_message_reboot, Toast.LENGTH_LONG).show();
-                            new Command(host.veid, host.key).reboot(new OkHttpUtils.HttpCallBack() {
-                                @Override
-                                public void onFail(Exception e) {
+                    mReboot.setOnClickListener(v -> {
+                        Toast.makeText(getApplicationContext(), R.string.activity_main_message_reboot, Toast.LENGTH_LONG).show();
+                        new Command(host.veid, host.key).reboot(new OkHttpUtils.HttpCallBack() {
+                            @Override
+                            public void onFail(Exception e) {
 
-                                }
+                            }
 
-                                @Override
-                                public void onOk(String msg) {
+                            @Override
+                            public void onOk(String msg1) {
 
-                                }
-                            });
-                        }
+                            }
+                        });
                     });
 
-                    mStop.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            Toast.makeText(getApplicationContext(), R.string.activity_main_message_stop, Toast.LENGTH_LONG).show();
-                            new Command(host.veid, host.key).stop(new OkHttpUtils.HttpCallBack() {
-                                @Override
-                                public void onFail(Exception e) {
+                    mStop.setOnClickListener(v -> {
+                        Toast.makeText(getApplicationContext(), R.string.activity_main_message_stop, Toast.LENGTH_LONG).show();
+                        new Command(host.veid, host.key).stop(new OkHttpUtils.HttpCallBack() {
+                            @Override
+                            public void onFail(Exception e) {
 
-                                }
+                            }
 
-                                @Override
-                                public void onOk(String msg) {
+                            @Override
+                            public void onOk(String msg1) {
 
-                                }
-                            });
-                        }
+                            }
+                        });
                     });
 
                     mMainCardView.setVisibility(View.VISIBLE);

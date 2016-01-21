@@ -23,11 +23,8 @@ public class AboutDialog {
         String title = mContext.getString(R.string.app_name) + " V" + Tools.getVersionName(mContext);
         mBuilder.setTitle(title);
         mBuilder.setMessage(R.string.dialog_host_main_about);
-        mBuilder.setPositiveButton(R.string.dialog_host_main_ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
+        mBuilder.setPositiveButton(R.string.dialog_host_main_ok, (dialog, which) -> {
 
-            }
         });
         return this;
     }

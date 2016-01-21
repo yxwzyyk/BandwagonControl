@@ -36,24 +36,14 @@ public class OkHttpUtils {
             @Override
             public void onFailure(Request request, final IOException e) {
                 Mlog.logI(TAG, "请求失败:" + e.toString());
-                new Delivery().MainThreadRun(new Runnable() {
-                    @Override
-                    public void run() {
-                        mHttpCallBack.onFail(e);
-                    }
-                });
+                new Delivery().MainThreadRun(() -> mHttpCallBack.onFail(e));
             }
 
             @Override
             public void onResponse(Response response) throws IOException {
                 final String result = response.body().string();
                 Mlog.logI(TAG,"请求成功:"+result);
-                new Delivery().MainThreadRun(new Runnable() {
-                    @Override
-                    public void run() {
-                        mHttpCallBack.onOk(result);
-                    }
-                });
+                new Delivery().MainThreadRun(() -> mHttpCallBack.onOk(result));
             }
         });
     }

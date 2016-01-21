@@ -13,12 +13,7 @@ public class Delivery {
     private final Executor mExecutor;
 
     public Delivery() {
-        mExecutor = new Executor() {
-            @Override
-            public void execute(Runnable command) {
-                new Handler(Looper.getMainLooper()).post(command);
-            }
-        };
+        mExecutor = command -> new Handler(Looper.getMainLooper()).post(command);
     }
 
     public void MainThreadRun(Runnable r) {

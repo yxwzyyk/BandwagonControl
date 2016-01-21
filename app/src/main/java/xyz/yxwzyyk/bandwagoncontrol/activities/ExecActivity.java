@@ -75,23 +75,15 @@ public class ExecActivity extends AppCompatActivity {
         mAdapter = new ExecAdapter(this, mList);
         mExecRecyclerView.setAdapter(mAdapter);
 
-        mExecSend.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mExecSend.setOnClickListener(v -> sendMessage());
+
+        mExecCommand.setOnEditorActionListener((v, actionId, event) -> {
+            if (actionId == EditorInfo.IME_ACTION_SEND
+                    || actionId == EditorInfo.IME_ACTION_DONE
+                    || (event != null && KeyEvent.KEYCODE_ENTER == event.getKeyCode() && KeyEvent.ACTION_DOWN == event.getAction())) {
                 sendMessage();
             }
-        });
-
-        mExecCommand.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEND
-                        || actionId == EditorInfo.IME_ACTION_DONE
-                        || (event != null && KeyEvent.KEYCODE_ENTER == event.getKeyCode() && KeyEvent.ACTION_DOWN == event.getAction())) {
-                    sendMessage();
-                }
-                return false;
-            }
+            return false;
         });
     }
 

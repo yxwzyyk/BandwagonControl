@@ -23,17 +23,11 @@ public class DeleteHostDialog {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(mContext);
         mBuilder.setCancelable(false);
         mBuilder.setTitle(R.string.dialog_host_main_remove_title);
-        mBuilder.setPositiveButton(R.string.dialog_host_main_ok, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                mCallBack.onCallBack(true);
-            }
+        mBuilder.setPositiveButton(R.string.dialog_host_main_ok, (dialog, which) -> {
+            mCallBack.onCallBack(true);
         });
-        mBuilder.setNegativeButton(R.string.dialog_host_main_cancel, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (mCallBack != null) mCallBack.onCallBack(false);
-            }
+        mBuilder.setNegativeButton(R.string.dialog_host_main_cancel, (dialog, which) -> {
+            if (mCallBack != null) mCallBack.onCallBack(false);
         });
         mAlertDialog = mBuilder.create();
         mHost = new Host();
