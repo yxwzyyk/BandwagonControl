@@ -18,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
@@ -29,6 +31,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import xyz.yxwzyyk.bandwagoncontrol.R;
 import xyz.yxwzyyk.bandwagoncontrol.adapters.ExecAdapter;
+import xyz.yxwzyyk.bandwagoncontrol.app.AnalyticsTrackers;
 import xyz.yxwzyyk.bandwagoncontrol.host.Command;
 import xyz.yxwzyyk.bandwagoncontrol.host.Exec;
 import xyz.yxwzyyk.bandwagoncontrol.utils.Mlog;
@@ -54,6 +57,7 @@ public class ExecActivity extends AppCompatActivity {
     private List<ExecAdapter.Item> mList;
     private ExecAdapter mAdapter;
 
+    private Tracker mTracker;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,6 +66,15 @@ public class ExecActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mContext = this;
         initView();
+
+        mTracker = AnalyticsTrackers.getInstance().get(AnalyticsTrackers.Target.APP);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mTracker.setScreenName(this.getClass().getName());
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     private void initView() {

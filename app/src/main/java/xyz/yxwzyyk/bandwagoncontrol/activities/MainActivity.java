@@ -20,6 +20,11 @@ import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -27,7 +32,8 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import xyz.yxwzyyk.bandwagoncontrol.R;
-import xyz.yxwzyyk.bandwagoncontrol.app.DialogCallBack;
+import xyz.yxwzyyk.bandwagoncontrol.app.AnalyticsTrackers;
+import xyz.yxwzyyk.bandwagoncontrol.app.MainApplication;
 import xyz.yxwzyyk.bandwagoncontrol.db.DBManager;
 import xyz.yxwzyyk.bandwagoncontrol.db.Host;
 import xyz.yxwzyyk.bandwagoncontrol.host.Command;
@@ -117,6 +123,10 @@ public class MainActivity extends AppCompatActivity
     FloatingActionMenu mActivityMainFab;
     @Bind(R.id.main_progressBar_loading)
     ProgressBar mMainProgressBarLoading;
+    @Bind(R.id.adView)
+    AdView mAdView;
+
+    private Tracker mTracker;
 
     private DBManager mDB;
     private List<Host> mList;
@@ -128,7 +138,20 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        mTracker = AnalyticsTrackers.getInstance().get(AnalyticsTrackers.Target.APP);
+
         init();
+
+        setAd();
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mTracker.setScreenName(this.getClass().getName());
+        mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }
 
     @Override
@@ -185,6 +208,43 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
+    private void setAd() {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setVisibility(View.GONE);
+
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+                mAdView.setVisibility(View.VISIBLE);
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("AD")
+                        .setAction("Loaded")
+                        .build());
+                super.onAdLoaded();
+            }
+
+            @Override
+            public void onAdOpened() {
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("AD")
+                        .setAction("Opened")
+                        .build());
+                super.onAdOpened();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                mAdView.setVisibility(View.GONE);
+                mTracker.send(new HitBuilders.EventBuilder()
+                        .setCategory("AD")
+                        .setAction("FailedToLoad")
+                        .build());
+                super.onAdFailedToLoad(errorCode);
+            }
+        });
+    }
+
 
     private void init() {
         //设置toolbar
@@ -205,7 +265,7 @@ public class MainActivity extends AppCompatActivity
             mActivityMainFab.close(true);
             Intent intent = new Intent(MainActivity.this, ExecActivity.class);
             intent.putExtra("id", mList.get(mListPointer).veid);
-            intent.putExtra("key",  mList.get(mListPointer).key);
+            intent.putExtra("key", mList.get(mListPointer).key);
             intent.putExtra("type", "basicShell");
             startActivity(intent);
         });

@@ -1,10 +1,9 @@
 package xyz.yxwzyyk.bandwagoncontrol.host;
 
-import com.squareup.okhttp.FormEncodingBuilder;
-import com.squareup.okhttp.RequestBody;
 
+import okhttp3.FormBody;
+import okhttp3.RequestBody;
 import xyz.yxwzyyk.bandwagoncontrol.app.Configure;
-import xyz.yxwzyyk.bandwagoncontrol.utils.Mlog;
 import xyz.yxwzyyk.bandwagoncontrol.utils.OkHttpUtils;
 
 /**
@@ -44,7 +43,7 @@ public class Command {
 
     public void basicShell(String command, OkHttpUtils.HttpCallBack callBack) {
         mHttpUtils.setUrl(Configure.HOST_URL + Configure.BASICSHELL).setCallBack(callBack);
-        RequestBody body=new FormEncodingBuilder()
+        RequestBody body = new FormBody.Builder()
                 .add("veid", mID)
                 .add("api_key", mKey)
                 .add("command", command)
@@ -52,8 +51,8 @@ public class Command {
         mHttpUtils.post(body);
     }
 
-    private RequestBody setIdKey(){
-        RequestBody body=new FormEncodingBuilder()
+    private RequestBody setIdKey() {
+        RequestBody body = new FormBody.Builder()
                 .add("veid", mID)
                 .add("api_key", mKey)
                 .build();
