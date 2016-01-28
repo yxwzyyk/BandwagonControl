@@ -6,6 +6,7 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -124,6 +125,8 @@ public class MainActivity extends AppCompatActivity
     ProgressBar mMainProgressBarLoading;
     @Bind(R.id.adView)
     AdView mAdView;
+    @Bind(R.id.main_nestedScrollView)
+    NestedScrollView mMainNestedScrollView;
 
     private Tracker mTracker;
 
@@ -257,6 +260,14 @@ public class MainActivity extends AppCompatActivity
         mActivityMainFabMenuRefresh.setOnClickListener(v -> {
             mActivityMainFab.close(true);
             getData();
+        });
+
+        mMainNestedScrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+            if (scrollY < oldScrollY) {
+                mActivityMainFab.showMenu(true);
+            } else {
+                mActivityMainFab.hideMenu(true);
+            }
         });
 
         //设置浮动shell按钮
