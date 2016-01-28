@@ -1,0 +1,64 @@
+<resources>
+    <string name="app_name">搬瓦工控制器</string>
+
+    <string name="navigation_drawer_open">打开抽屉</string>
+    <string name="navigation_drawer_close">关闭抽屉</string>
+
+    <string name="activity_main_message_verify">验证错误!\n请检查您的ID和key是否正确!</string>
+    <string name="activity_main_message_internet">网络错误!\n请检查您的网络状态!</string>
+    <string name="activity_main_message_getInfo">正在更新主机状态</string>
+    <string name="activity_main_message_start">启动主机</string>
+    <string name="activity_main_message_reboot">重启主机</string>
+    <string name="activity_main_message_stop">停止主机</string>
+
+    <string name="activity_main_menu_about">关于和帮助</string>
+    <string name="activity_main_menu_update">更新配置</string>
+    <string name="activity_main_menu_remove">删除配置</string>
+    <string name="activity_main_drawer_add">添加主机配置</string>
+
+    <string name="activity_main_fab_label_refresh">刷新</string>
+    <string name="activity_main_fab_label_basicShell">执行Shell</string>
+
+    <string name="dialog_host_main_hint_title">主机名称</string>
+    <string name="dialog_host_main_hint_id">主机ID(VEID)</string>
+    <string name="dialog_host_main_hint_key">密钥(API KEY)</string>
+    <string name="dialog_host_main_add_title">添加主机配置</string>
+    <string name="dialog_host_main_remove_title">删除主机配置</string>
+    <string name="dialog_host_main_update_title">更新主机配置</string>
+    <string name="dialog_host_main_remove_message">你确定要删除吗?</string>
+    <string name="dialog_host_main_null">不能为空</string>
+    <string name="dialog_host_main_ok">确定</string>
+    <string name="dialog_host_main_cancel">取消</string>
+
+    <string name="content_main_tip">请选择或者添加一个配置文件!</string>
+    <string name="content_main_title_CPU">CPU负载</string>
+    <string name="content_main_title_hostPlan">主机类型</string>
+    <string name="content_main_title_hostName">主机名称</string>
+    <string name="content_main_title_Location">主机所在地</string>
+    <string name="content_main_title_os">主机系统</string>
+    <string name="content_main_title_sshPort">SSH 端口</string>
+    <string name="content_main_title_ip">主机 IP</string>
+    <string name="content_main_title_status">主机状态</string>
+    <string name="content_main_title_ram">主机内存</string>
+    <string name="content_main_title_swap">虚拟内存</string>
+    <string name="content_main_title_disk">主机储存空间</string>
+    <string name="content_main_title_bandwidth">流量使用情况</string>
+    <string name="content_main_title_start">启动</string>
+    <string name="content_main_title_reboot">重启</string>
+    <string name="content_main_title_stop">停止</string>
+
+    <string name="exec_send">发送</string>
+    <string name="exec_empty">命令不能为空</string>
+    <string name="exec_send_message">发送命令</string>
+    <string name="exec_message_error">网络错误发送失败请重试!</string>
+
+    <string name="dialog_host_main_about">
+        周末写的小程序希望可以对你有帮助\n如果你有任何建议或者疑问可以发邮件给我 yxwzyyk@gmail.com\n
+        更新日志:\n
+        2015-12-20:修正Resrst显示,添加basicShell \n
+        2016-01-21:Fix \n
+        2016-01-28:添加英文翻译
+    </string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-6763121522512924/8700825491</string>
+</resources>
