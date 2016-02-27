@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
@@ -101,9 +102,9 @@ public class ExecActivity extends AppCompatActivity {
         final String command = mExecCommand.getText().toString().trim();
         mExecCommand.setText("");
         Toast.makeText(mContext, R.string.exec_send_message, Toast.LENGTH_SHORT).show();
+
         if (command.isEmpty()) {
             mExecCommand.setError(mContext.getString(R.string.exec_empty));
-            return;
         } else {
             mCommand.basicShell(command, new OkHttpUtils.HttpCallBack() {
                 @Override

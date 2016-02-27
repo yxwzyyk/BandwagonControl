@@ -29,6 +29,7 @@
     <string name="dialog_host_main_null">Can not be empty</string>
     <string name="dialog_host_main_ok">OK</string>
     <string name="dialog_host_main_cancel">Cancel</string>
+    <string name="dialog_host_main_get">Get key</string>
 
     <string name="content_main_tip">Please select or add a configuration file!</string>
     <string name="content_main_title_CPU">Load Average</string>
@@ -57,7 +58,8 @@
         更新日志:\n
         2015-12-20:修正Resrst显示,添加basicShell \n
         2016-01-21:Fix \n
-        2016-01-28:添加英文翻译
+        2016-01-28:添加英文翻译\n
+        2016-02-27:添加查看KEY的链接,修复2个异常
     </string>
 
 

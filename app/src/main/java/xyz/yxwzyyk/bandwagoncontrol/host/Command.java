@@ -51,6 +51,17 @@ public class Command {
         mHttpUtils.post(body);
     }
 
+    public void basicShellCD(String currentDir, String newDir, OkHttpUtils.HttpCallBack callBack) {
+        mHttpUtils.setUrl(Configure.HOST_URL + Configure.BASICSHELLCD).setCallBack(callBack);
+        RequestBody body = new FormBody.Builder()
+                .add("veid", mID)
+                .add("api_key", mKey)
+                .add("currentDir", currentDir)
+                .add("newDir", newDir)
+                .build();
+        mHttpUtils.post(body);
+    }
+
     private RequestBody setIdKey() {
         RequestBody body = new FormBody.Builder()
                 .add("veid", mID)

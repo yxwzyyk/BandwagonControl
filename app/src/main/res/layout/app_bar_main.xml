@@ -40,9 +40,7 @@
         android:layout_margin="@dimen/fab_margin"
         android:visibility="gone"
         fab:menu_colorNormal="@color/colorAccent"
-        fab:menu_colorPressed="@color/colorAccent"
-        fab:menu_labels_hideAnimation="@anim/fab_slide_out_to_right"
-        fab:menu_labels_showAnimation="@anim/fab_slide_in_from_right">
+        fab:menu_colorPressed="@color/colorAccent">
 
 
         <com.github.clans.fab.FloatingActionButton

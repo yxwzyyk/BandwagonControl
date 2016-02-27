@@ -29,6 +29,7 @@
     <string name="dialog_host_main_null">不能为空</string>
     <string name="dialog_host_main_ok">确定</string>
     <string name="dialog_host_main_cancel">取消</string>
+    <string name="dialog_host_main_get">获取密钥</string>
 
     <string name="content_main_tip">请选择或者添加一个配置文件!</string>
     <string name="content_main_title_CPU">CPU负载</string>
@@ -57,7 +58,8 @@
         更新日志:\n
         2015-12-20:修正Resrst显示,添加basicShell \n
         2016-01-21:Fix \n
-        2016-01-28:添加英文翻译
+        2016-01-28:添加英文翻译\n
+        2016-02-27:添加查看KEY的链接,修复2个异常
     </string>
 
     <string name="banner_ad_unit_id">ca-app-pub-6763121522512924/8700825491</string>

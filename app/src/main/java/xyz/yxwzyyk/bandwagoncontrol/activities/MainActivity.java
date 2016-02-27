@@ -312,29 +312,37 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void updateHost() {
-        if (mList.size() <= 0) return;
-        final UpdateHostDialog dialog = new UpdateHostDialog(this, mList.get(mListPointer));
-        dialog.setCallBack(result -> {
-            if (result) {
-                mDB.update(dialog.getHost());
-                updateHostList();
-                mActivityMainDrawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
-        dialog.show();
+        try {
+            if (mList.size() <= 0) return;
+            final UpdateHostDialog dialog = new UpdateHostDialog(this, mList.get(mListPointer));
+            dialog.setCallBack(result -> {
+                if (result) {
+                    mDB.update(dialog.getHost());
+                    updateHostList();
+                    mActivityMainDrawerLayout.openDrawer(GravityCompat.START);
+                }
+            });
+            dialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void deleteHost() {
-        if (mList.size() <= 0) return;
-        DeleteHostDialog dialog = new DeleteHostDialog(this);
-        dialog.setCallBack(result -> {
-            if (result) {
-                mDB.delete(mList.get(mListPointer)._id);
-                updateHostList();
-                mActivityMainDrawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
-        dialog.show();
+        try {
+            if (mList.size() <= 0) return;
+            DeleteHostDialog dialog = new DeleteHostDialog(this);
+            dialog.setCallBack(result -> {
+                if (result) {
+                    mDB.delete(mList.get(mListPointer)._id);
+                    updateHostList();
+                    mActivityMainDrawerLayout.openDrawer(GravityCompat.START);
+                }
+            });
+            dialog.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void updateHostList() {

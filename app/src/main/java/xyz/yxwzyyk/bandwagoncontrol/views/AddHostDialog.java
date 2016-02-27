@@ -1,6 +1,8 @@
 package xyz.yxwzyyk.bandwagoncontrol.views;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
@@ -21,6 +23,7 @@ public class AddHostDialog implements View.OnClickListener {
     private TextInputLayout mInputKey;
     private Button mButtonOk;
     private Button mButtonCancel;
+    private Button mButtonGet;
 
     private Context mContext;
     private AlertDialog mAlertDialog;
@@ -36,6 +39,7 @@ public class AddHostDialog implements View.OnClickListener {
         mAlertDialog = mBuilder.create();
         mHost = new Host();
     }
+
     public void setCallBack(DialogCallBack callBack) {
         mCallBack = callBack;
     }
@@ -55,9 +59,11 @@ public class AddHostDialog implements View.OnClickListener {
         mInputKey = (TextInputLayout) view.findViewById(R.id.dialog_host_main_textInput_key);
         mButtonOk = (Button) view.findViewById(R.id.dialog_host_main_button_ok);
         mButtonCancel = (Button) view.findViewById(R.id.dialog_host_main_button_cancel);
+        mButtonGet = (Button) view.findViewById(R.id.dialog_host_main_button_get);
 
         mButtonOk.setOnClickListener(this);
         mButtonCancel.setOnClickListener(this);
+        mButtonGet.setOnClickListener(this);
 
         new TextFiler(mContext).addTextChangedListener(mInputTitle);
         new TextFiler(mContext).addTextChangedListener(mInputId);
@@ -90,9 +96,17 @@ public class AddHostDialog implements View.OnClickListener {
             mHost.key = key;
             mCallBack.onCallBack(true);
             mAlertDialog.dismiss();
-        } else {
+        }
+
+        if (v.getId() == R.id.dialog_host_main_button_cancel) {
             mAlertDialog.dismiss();
             mCallBack.onCallBack(false);
+        }
+
+        if (v.getId() == R.id.dialog_host_main_button_get) {
+            Uri uri = Uri.parse("https://bandwagonhost.com/clientarea.php?action=products");
+            Intent intent = new Intent(Intent.ACTION_VIEW,uri);
+            mContext.startActivity(intent);
         }
     }
 }
