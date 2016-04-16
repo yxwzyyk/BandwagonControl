@@ -48,7 +48,6 @@ class HostRequest(veid: String, key: String) {
     }
 
     fun reboot(): String? {
-
         try {
             val body = FormBody.Builder()
                     .add("veid", mVeid)
@@ -128,6 +127,35 @@ class HostRequest(veid: String, key: String) {
                     .add("os", os)
                     .build()
             val request = Request.Builder().url(HttpURL.HOST_URL + HttpURL.REINSTALL_OS).post(body).build()
+            val response = mHttp.newCall(request).execute()
+            return response.body().string()
+        } catch (e: Exception) {
+            return null
+        }
+    }
+
+    fun getLocations(): String? {
+        try {
+            val body = FormBody.Builder()
+                    .add("veid", mVeid)
+                    .add("api_key", mKey)
+                    .build()
+            val request = Request.Builder().url(HttpURL.HOST_URL + HttpURL.GET_LOCATIONS).post(body).build()
+            val response = mHttp.newCall(request).execute()
+            return response.body().string()
+        } catch (e: Exception) {
+            return null
+        }
+    }
+
+    fun setLocations(location: String): String? {
+        try {
+            val body = FormBody.Builder()
+                    .add("veid", mVeid)
+                    .add("api_key", mKey)
+                    .add("location", location)
+                    .build()
+            val request = Request.Builder().url(HttpURL.HOST_URL + HttpURL.SET_LOCATIONS).post(body).build()
             val response = mHttp.newCall(request).execute()
             return response.body().string()
         } catch (e: Exception) {

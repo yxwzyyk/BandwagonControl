@@ -5,6 +5,7 @@
     <string name="popup_update">Update</string>
     <string name="popup_remove">Remove</string>
     <string name="popup_install">Confirm install</string>
+    <string name="popup_locations">Migration</string>
 
     <string name="dialog_host_title_add">Adding Host Configuration</string>
     <string name="dialog_host_title_update">Update Host Configuration</string>
@@ -52,6 +53,11 @@
     <string name="host_fab_label_basicShell">Shell</string>
     <string name="host_fab_label_resetRootPassword">Reset Root Password</string>
     <string name="host_fab_label_reinstallOS">Reinstall OS</string>
+    <string name="host_fab_label_locations">Locations</string>
+
+    <string name="locations_migration">Migration to new location\nAbout 5 minutes</string>
+    <string name="locations_error">Network error!</string>
+    <string name="locations_load">Loading...</string>
 
     <string name="os_install">Installing: </string>
     <string name="os_error">Network error!</string>

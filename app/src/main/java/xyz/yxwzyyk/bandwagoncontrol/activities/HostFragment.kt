@@ -4,7 +4,6 @@ package xyz.yxwzyyk.bandwagoncontrol.activities
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.widget.NestedScrollView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -170,7 +169,12 @@ class HostFragment(host: Host) : Fragment() {
 
 
         host_fab_menu_reinstallOS.setOnClickListener { v->
-            callback?.callBack(Constant.GOTI_REINSTALL_OS_FRAGMENT)
+            callback?.callBack(Constant.GOTO_REINSTALL_OS_FRAGMENT)
+            host_fab.close(true)
+        }
+
+        host_fab_menu_locations.setOnClickListener { v->
+            callback?.callBack(Constant.GOTO_LOCATIONS_FRAGMENT)
             host_fab.close(true)
         }
 

@@ -9,7 +9,6 @@
     android:background="@color/white">
 
 
-
     <ProgressBar
         android:id="@+id/host_progressBar_loading"
         style="?android:attr/progressBarStyleLarge"
@@ -464,6 +463,15 @@
             fab:fab_label="@string/host_fab_label_resetRootPassword"
             fab:fab_size="mini"/>
 
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/host_fab_menu_locations"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_location_24dp"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"
+            fab:fab_label="@string/host_fab_label_locations"
+            fab:fab_size="mini"/>
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/host_fab_menu_shell"

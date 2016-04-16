@@ -5,6 +5,7 @@
     <string name="popup_update">更新</string>
     <string name="popup_remove">删除</string>
     <string name="popup_install">确认安装</string>
+    <string name="popup_locations">迁移机房</string>
 
 
     <string name="dialog_host_title_add">添加主机</string>
@@ -53,6 +54,11 @@
     <string name="host_fab_label_basicShell">执行Shell</string>
     <string name="host_fab_label_resetRootPassword">重置Root密码</string>
     <string name="host_fab_label_reinstallOS">安装新系统</string>
+    <string name="host_fab_label_locations">切换机房</string>
+
+    <string name="locations_migration">正在迁移机房\n大约需要5分钟</string>
+    <string name="locations_error">网络错误!</string>
+    <string name="locations_load">载入中...</string>
 
     <string name="os_install">正在安装: </string>
     <string name="os_error">网络错误!</string>

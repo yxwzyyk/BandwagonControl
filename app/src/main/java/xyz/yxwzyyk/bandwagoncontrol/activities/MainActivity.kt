@@ -39,9 +39,15 @@ class MainActivity : AppCompatActivity() {
                                         .addToBackStack(null).commit()
                             }
 
-                            Constant.GOTI_REINSTALL_OS_FRAGMENT -> {
+                            Constant.GOTO_REINSTALL_OS_FRAGMENT -> {
                                 val reinstallOSFragment = ReinstallOSFragment(host)
                                 supportFragmentManager.beginTransaction().add(R.id.fragment, reinstallOSFragment)
+                                        .addToBackStack(null).commit()
+                            }
+
+                            Constant.GOTO_LOCATIONS_FRAGMENT -> {
+                                val locationsFragment = LocationsFragment(host)
+                                supportFragmentManager.beginTransaction().add(R.id.fragment, locationsFragment)
                                         .addToBackStack(null).commit()
                             }
                         }
