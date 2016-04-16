@@ -4,6 +4,8 @@
 
     <string name="popup_update">更新</string>
     <string name="popup_remove">删除</string>
+    <string name="popup_install">确认安装</string>
+
 
     <string name="dialog_host_title_add">添加主机</string>
     <string name="dialog_host_title_update">更新主机</string>
@@ -50,6 +52,12 @@
     <string name="host_fab_label_refresh">刷新</string>
     <string name="host_fab_label_basicShell">执行Shell</string>
     <string name="host_fab_label_resetRootPassword">重置Root密码</string>
+    <string name="host_fab_label_reinstallOS">安装新系统</string>
+
+    <string name="os_install">正在安装: </string>
+    <string name="os_error">网络错误!</string>
+    <string name="os_load">载入中...</string>
+    <string name="os_warning">请确认你知道自己在干什么!</string>
 
     <string name="about_title">关于</string>
     <string name="about_version">版本: </string>

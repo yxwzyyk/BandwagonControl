@@ -445,6 +445,16 @@
         android:layout_marginRight="16dp">
 
         <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/host_fab_menu_reinstallOS"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_laptop_windows_24dp"
+            fab:fab_colorNormal="@color/colorAccent"
+            fab:fab_colorPressed="@color/colorAccent"
+            fab:fab_label="@string/host_fab_label_reinstallOS"
+            fab:fab_size="mini"/>
+
+        <com.github.clans.fab.FloatingActionButton
             android:id="@+id/host_fab_menu_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

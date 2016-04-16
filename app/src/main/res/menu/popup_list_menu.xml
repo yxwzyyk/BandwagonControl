@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/menu_popup_update"
+        android:id="@+id/menu_list_update"
         android:title="@string/popup_update"/>
     <item
-        android:id="@+id/menu_popup_remove"
+        android:id="@+id/menu_list_remove"
         android:title="@string/popup_remove"/>
 </menu>

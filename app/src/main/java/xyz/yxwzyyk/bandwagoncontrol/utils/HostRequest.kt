@@ -106,4 +106,32 @@ class HostRequest(veid: String, key: String) {
         }
     }
 
+    fun getAvailableOS(): String? {
+        try {
+            val body = FormBody.Builder()
+                    .add("veid", mVeid)
+                    .add("api_key", mKey)
+                    .build()
+            val request = Request.Builder().url(HttpURL.HOST_URL + HttpURL.GET_AVAILABLE_OS).post(body).build()
+            val response = mHttp.newCall(request).execute()
+            return response.body().string()
+        } catch (e: Exception) {
+            return null
+        }
+    }
+
+    fun reinstallOS(os: String): String? {
+        try {
+            val body = FormBody.Builder()
+                    .add("veid", mVeid)
+                    .add("api_key", mKey)
+                    .add("os", os)
+                    .build()
+            val request = Request.Builder().url(HttpURL.HOST_URL + HttpURL.REINSTALL_OS).post(body).build()
+            val response = mHttp.newCall(request).execute()
+            return response.body().string()
+        } catch (e: Exception) {
+            return null
+        }
+    }
 }

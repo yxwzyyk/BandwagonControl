@@ -20,6 +20,7 @@ import xyz.yxwzyyk.bandwagoncontrol.bean.Info
 import xyz.yxwzyyk.bandwagoncontrol.bean.InfoParse
 import xyz.yxwzyyk.bandwagoncontrol.bean.Password
 import xyz.yxwzyyk.bandwagoncontrol.db.Host
+import xyz.yxwzyyk.bandwagoncontrol.utils.Constant
 import xyz.yxwzyyk.bandwagoncontrol.utils.FragmentCallBack
 import xyz.yxwzyyk.bandwagoncontrol.utils.HostRequest
 import xyz.yxwzyyk.bandwagoncontrol.views.PasswordDialog
@@ -167,8 +168,14 @@ class HostFragment(host: Host) : Fragment() {
             host_fab.close(true)
         }
 
+
+        host_fab_menu_reinstallOS.setOnClickListener { v->
+            callback?.callBack(Constant.GOTI_REINSTALL_OS_FRAGMENT)
+            host_fab.close(true)
+        }
+
         host_fab_menu_shell.setOnClickListener { v ->
-            callback?.callBack(1)
+            callback?.callBack(Constant.GOTO_SHELL_FRAGMENT)
             host_fab.close(true)
         }
 

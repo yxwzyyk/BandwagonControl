@@ -2,8 +2,9 @@
     <string name="app_name">BandwagonControl</string>
     <string name="action_about">About</string>
 
-    <string name="popup_update">update</string>
-    <string name="popup_remove">remove</string>
+    <string name="popup_update">Update</string>
+    <string name="popup_remove">Remove</string>
+    <string name="popup_install">Confirm install</string>
 
     <string name="dialog_host_title_add">Adding Host Configuration</string>
     <string name="dialog_host_title_update">Update Host Configuration</string>
@@ -50,6 +51,12 @@
     <string name="host_fab_label_refresh">Reload</string>
     <string name="host_fab_label_basicShell">Shell</string>
     <string name="host_fab_label_resetRootPassword">Reset Root Password</string>
+    <string name="host_fab_label_reinstallOS">Reinstall OS</string>
+
+    <string name="os_install">Installing: </string>
+    <string name="os_error">Network error!</string>
+    <string name="os_load">Loading...</string>
+    <string name="os_warning">Make sure you know what you are doing!</string>
 
     <string name="about_title">About</string>
     <string name="about_version">Version: </string>

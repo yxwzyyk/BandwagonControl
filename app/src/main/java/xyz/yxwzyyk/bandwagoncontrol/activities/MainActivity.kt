@@ -11,6 +11,7 @@ import org.jetbrains.anko.uiThread
 import xyz.yxwzyyk.bandwagoncontrol.R
 import xyz.yxwzyyk.bandwagoncontrol.app.AnalyticsTrackers
 import xyz.yxwzyyk.bandwagoncontrol.db.Host
+import xyz.yxwzyyk.bandwagoncontrol.utils.Constant
 import xyz.yxwzyyk.bandwagoncontrol.utils.FragmentCallBack
 import xyz.yxwzyyk.bandwagoncontrol.views.AboutDialog
 
@@ -31,15 +32,24 @@ class MainActivity : AppCompatActivity() {
                 val hostFragment = HostFragment(host)
                 hostFragment.callback = object : FragmentCallBack {
                     override fun callBack(data: Any) {
-                        if (data == 1) {
-                            val shellFragment = ShellFragment(host)
-                            supportFragmentManager.beginTransaction().add(R.id.fragment, shellFragment)
-                                    .addToBackStack(null).commit()
+                        when (data) {
+                            Constant.GOTO_SHELL_FRAGMENT -> {
+                                val shellFragment = ShellFragment(host)
+                                supportFragmentManager.beginTransaction().add(R.id.fragment, shellFragment)
+                                        .addToBackStack(null).commit()
+                            }
+
+                            Constant.GOTI_REINSTALL_OS_FRAGMENT -> {
+                                val reinstallOSFragment = ReinstallOSFragment(host)
+                                supportFragmentManager.beginTransaction().add(R.id.fragment, reinstallOSFragment)
+                                        .addToBackStack(null).commit()
+                            }
                         }
+
                     }
                 }
                 async() {
-                    Thread.sleep(500)
+                    Thread.sleep(100)
                     uiThread {
                         supportFragmentManager.beginTransaction().add(R.id.fragment, hostFragment)
                                 .addToBackStack(null).commit()

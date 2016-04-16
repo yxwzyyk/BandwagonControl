@@ -11,5 +11,12 @@ object HttpURL {
     val START = "start"
     val BASIC_SHELL = "basicShell/exec"
     val RESET_ROOT_PASSWORD = "resetRootPassword"
+    val GET_AVAILABLE_OS = "getAvailableOS"
+    val REINSTALL_OS = "reinstallOS"
+}
+
+object Constant {
+    val GOTO_SHELL_FRAGMENT = 1
+    val GOTI_REINSTALL_OS_FRAGMENT = 2
 }
 

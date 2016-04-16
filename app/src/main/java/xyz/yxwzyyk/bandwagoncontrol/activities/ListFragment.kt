@@ -121,10 +121,10 @@ class ListFragment : Fragment() {
     fun showPopupMenu(v: View, position: Int) {
 
         var popupMenu = PopupMenu(context, v);
-        popupMenu.menuInflater.inflate(R.menu.popup_menu, popupMenu.menu);
+        popupMenu.menuInflater.inflate(R.menu.popup_list_menu, popupMenu.menu);
         popupMenu.setOnMenuItemClickListener { item ->
             when (item.itemId) {
-                R.id.menu_popup_update -> {
+                R.id.menu_list_update -> {
                     val dialog = HostDialog(context, R.string.dialog_host_title_update)
                     dialog.setHost(mList?.get(position)!!)
                     dialog.dialogCallBack = object : DialogCallBack {
@@ -149,7 +149,7 @@ class ListFragment : Fragment() {
                     }
                     dialog.show()
                 }
-                R.id.menu_popup_remove -> {
+                R.id.menu_list_remove -> {
                     context.database.use {
                         delete(HostTable.NAME, "_id = {_id}", HostTable.ID to mList?.get(position)?._id!!)
                     }
