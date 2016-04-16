@@ -1,67 +1,60 @@
 <resources>
-    <string name="app_name">Bandwagon Control</string>
+    <string name="app_name">BandwagonControl</string>
+    <string name="action_about">About</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="popup_update">update</string>
+    <string name="popup_remove">remove</string>
 
-    <string name="activity_main_message_verify">Validation Error!\nPlease check your ID and key are correct!</string>
-    <string name="activity_main_message_internet">Network Error!\nCheck your network status!</string>
-    <string name="activity_main_message_getInfo">Updating the host state</string>
-    <string name="activity_main_message_start">start</string>
-    <string name="activity_main_message_reboot">reboot</string>
-    <string name="activity_main_message_stop">stop</string>
+    <string name="dialog_host_title_add">Adding Host Configuration</string>
+    <string name="dialog_host_title_update">Update Host Configuration</string>
+    <string name="dialog_host_hint_title">TITLE</string>
+    <string name="dialog_host_hint_id">ID</string>
+    <string name="dialog_host_hint_key">KEY</string>
+    <string name="dialog_host_notice">Get api_key</string>
+    <string name="dialog_host_cancel">Cancel</string>
+    <string name="dialog_host_ok">OK</string>
 
-    <string name="activity_main_menu_about">About Help</string>
-    <string name="activity_main_menu_update">Update Configuration</string>
-    <string name="activity_main_menu_remove">Delete Configuration</string>
-    <string name="activity_main_drawer_add">Adding Host Configuration</string>
+    <string name="dialog_password_title">Reset Root Password</string>
+    <string name="dialog_password_hint">Keep in mind that your new password ROOT</string>
+    <string name="dialog_password_error">Modify password failed!</string>
+    <string name="dialog_password_ok">I remember</string>
 
-    <string name="activity_main_fab_label_refresh">Reload</string>
-    <string name="activity_main_fab_label_basicShell">Shell</string>
 
-    <string name="dialog_host_main_hint_title">Hostname</string>
-    <string name="dialog_host_main_hint_id">VPS ID</string>
-    <string name="dialog_host_main_hint_key">API KEY</string>
-    <string name="dialog_host_main_add_title">Adding Host Configuration</string>
-    <string name="dialog_host_main_remove_title">Remove Host Configuration</string>
-    <string name="dialog_host_main_update_title">Update Host Configuration</string>
-    <string name="dialog_host_main_remove_message">Are you sure you want to delete it?</string>
-    <string name="dialog_host_main_null">Can not be empty</string>
-    <string name="dialog_host_main_ok">OK</string>
-    <string name="dialog_host_main_cancel">Cancel</string>
-    <string name="dialog_host_main_get">Get key</string>
+    <string name="text_input_null">Can not be empty</string>
 
-    <string name="content_main_tip">Please select or add a configuration file!</string>
-    <string name="content_main_title_CPU">Load Average</string>
-    <string name="content_main_title_hostPlan">Plan</string>
-    <string name="content_main_title_hostName">Hostname</string>
-    <string name="content_main_title_Location">Physical Location</string>
-    <string name="content_main_title_os">Operating system</string>
-    <string name="content_main_title_sshPort">SSH Port</string>
-    <string name="content_main_title_ip">IP address</string>
-    <string name="content_main_title_status">Status</string>
-    <string name="content_main_title_ram">RAM</string>
-    <string name="content_main_title_swap">SWAP</string>
-    <string name="content_main_title_disk">Disk usage</string>
-    <string name="content_main_title_bandwidth">Bandwidth usage</string>
-    <string name="content_main_title_start">Start</string>
-    <string name="content_main_title_reboot">Reboot</string>
-    <string name="content_main_title_stop">Stop</string>
 
-    <string name="exec_send">Send</string>
-    <string name="exec_empty">Command can not be empty</string>
-    <string name="exec_send_message">Send command</string>
-    <string name="exec_message_error">Network error. Please try again failed to send!</string>
+    <string name="host_message_error">Network error!</string>
+    <string name="host_message_authenticate">Validation Error!</string>
+    <string name="host_message_load">Loading...</string>
 
-    <string name="dialog_host_main_about">
-        周末写的小程序希望可以对你有帮助\n如果你有任何建议或者疑问可以发邮件给我 yxwzyyk@gmail.com\n
-        更新日志:\n
-        2015-12-20:修正Resrst显示,添加basicShell \n
-        2016-01-21:Fix \n
-        2016-01-28:添加英文翻译\n
-        2016-02-27:添加查看KEY的链接,修复2个异常
-    </string>
+    <string name="host_title_CPU">Load Average</string>
+    <string name="host_title_hostPlan">Plan</string>
+    <string name="host_title_hostName">Hostname</string>
+    <string name="host_title_Location">Physical Location</string>
+    <string name="host_title_os">Operating system</string>
+    <string name="host_title_sshPort">SSH Port</string>
+    <string name="host_title_ip">IP address</string>
+    <string name="host_title_status">Status</string>
+    <string name="host_title_ram">RAM</string>
+    <string name="host_title_swap">SWAP</string>
+    <string name="host_title_disk">Disk usage</string>
+    <string name="host_title_bandwidth">Bandwidth usage</string>
+    <string name="host_title_start">Start</string>
+    <string name="host_title_reboot">Reboot</string>
+    <string name="host_title_stop">Stop</string>
 
+    <string name="host_toast_start">Start</string>
+    <string name="host_toast_reboot">Reboot</string>
+    <string name="host_toast_stop">Stop</string>
+
+    <string name="host_fab_label_refresh">Reload</string>
+    <string name="host_fab_label_basicShell">Shell</string>
+    <string name="host_fab_label_resetRootPassword">Reset Root Password</string>
+
+    <string name="about_title">About</string>
+    <string name="about_version">Version: </string>
+    <string name="about_author">By: yxwzyyk</string>
+    <string name="about_email">Email: yxwzyyk@gmail.com</string>
 
     <string name="banner_ad_unit_id">ca-app-pub-6763121522512924/8700825491</string>
 </resources>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp">
+
+    <View
+        android:id="@+id/about_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/colorText"/>
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:src="@mipmap/ic_launcher"
+        android:id="@+id/imageView"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/about_line"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:id="@+id/about_name"
+        android:textColor="@color/colorText"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="@string/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginLeft="8dp"
+        android:gravity="center_vertical"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_toRightOf="@+id/imageView"
+        android:layout_toEndOf="@+id/imageView"/>
+
+    <TextView
+        android:id="@+id/about_version"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorText"
+
+        android:layout_below="@+id/about_name"
+        android:layout_alignLeft="@+id/about_name"
+        android:layout_alignStart="@+id/about_name"/>
+
+    <TextView
+        android:id="@+id/about_author"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorText"
+        android:text="@string/about_author"
+        android:layout_below="@+id/about_version"
+        android:layout_alignLeft="@+id/about_name"
+        android:layout_alignStart="@+id/about_name"/>
+
+    <TextView
+        android:id="@+id/about_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorText"
+        android:text="@string/about_email"
+        android:layout_below="@+id/about_author"
+        android:layout_alignLeft="@+id/about_name"
+        android:layout_alignStart="@+id/about_name"/>
+
+</RelativeLayout>
