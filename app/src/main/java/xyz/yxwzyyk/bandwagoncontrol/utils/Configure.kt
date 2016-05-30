@@ -4,7 +4,7 @@ package xyz.yxwzyyk.bandwagoncontrol.utils
  * Created by yyk on 4/9/16.
  */
 object HttpURL {
-    val HOST_URL = "https://api.kiwivm.it7.net/v1/"
+    val HOST_URL = "https://api.64clouds.com/v1/"
     val GET_INFO = "getLiveServiceInfo"
     val REBOOT = "restart"
     val STOP = "stop"
