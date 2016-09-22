@@ -48,13 +48,13 @@ class InfoParse(val mInfo: Info) {
         }
 
     val ram: String
-        get() = Tools.bytesTokb(mInfo.plan_ram.toLong())
+        get() = Tools.getPrintSize(mInfo.plan_ram.toLong())
 
     val ramUse: String
         get() {
             if (mInfo.vz_status.oomguarpages == "-")
                 mInfo.vz_status.oomguarpages = "0"
-            return Tools.bytesTokb(java.lang.Long.parseLong(mInfo.vz_status.oomguarpages) * 4 * 1024)
+            return Tools.getPrintSize(java.lang.Long.parseLong(mInfo.vz_status.oomguarpages) * 4 * 1024)
         }
 
     val ramPercentage: Int
@@ -69,12 +69,12 @@ class InfoParse(val mInfo: Info) {
         }
 
     val swap: String
-        get() = Tools.bytesTokb(mInfo.plan_swap.toLong())
+        get() = Tools.getPrintSize(mInfo.plan_swap.toLong())
 
     val swapUse: String
         get() {
             if (mInfo.vz_status.swappages == "-") mInfo.vz_status.swappages = "0"
-            return Tools.bytesTokb(java.lang.Long.parseLong(mInfo.vz_status.swappages) * 4 * 1024)
+            return Tools.getPrintSize(java.lang.Long.parseLong(mInfo.vz_status.swappages) * 4 * 1024)
         }
 
     val swapPercentage: Int
@@ -88,13 +88,13 @@ class InfoParse(val mInfo: Info) {
         }
 
     val disk: String
-        get() = Tools.bytesTokb(mInfo.plan_disk)
+        get() = Tools.getPrintSize(mInfo.plan_disk)
 
     val diskUse: String
         get() {
             if (mInfo.vz_quota.occupied_kb == "-")
                 mInfo.vz_quota.occupied_kb = "0"
-            return Tools.bytesTokb(java.lang.Long.parseLong(mInfo.vz_quota.occupied_kb) * 1024)
+            return Tools.getPrintSize(java.lang.Long.parseLong(mInfo.vz_quota.occupied_kb) * 1024)
         }
 
     val diskPercentage: Int
@@ -109,10 +109,10 @@ class InfoParse(val mInfo: Info) {
         }
 
     val bandwidth: String
-        get() = Tools.bytesTokb(mInfo.plan_monthly_data)
+        get() = Tools.getPrintSize(mInfo.plan_monthly_data)
 
     val bandwidthUse: String
-        get() = Tools.bytesTokb(mInfo.data_counter)
+        get() = Tools.getPrintSize(mInfo.data_counter)
 
     val bandwidthPercentage: Int
         get() {
